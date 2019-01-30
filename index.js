@@ -25,7 +25,7 @@ apiRouter.post('/sayHello', (req, res) => {
 });
 
 apiRouter.post('/showHello', (req, res) => {
-    console.log(req.header);
+    console.log(req.headers);
     console.log(req.body);
 
     const responseBody = {
