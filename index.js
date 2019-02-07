@@ -8,6 +8,39 @@ app.use(logger('dev', {}));
 app.use(bodyPaser.json());
 app.use('/api', apiRouter);
 
+apiRouter.post('/showInfo', (req, res) => {
+    const responseBody = {
+        version: "2.0",
+        template: {
+            outpusts: [
+                {
+                    simpleText: {
+                        text: "골라봐"
+                    }
+                }
+            ],
+            quickReplies: [
+                {
+                    label: "정보보기",
+                    action: "block",
+                    messageText: "정보를 보여줍니다.",
+                    blockId: "setting blockId",
+                    extra: {
+                        infoKey: "value"
+                    }
+                },
+                {
+                    label: "다음으로",
+                    action: "block",
+                    messageText: "다음으로",
+                    blockId: "setting blockId"
+                }
+            ]
+        }
+    };
+    res.status(200).send(responseBody);
+});
+
 apiRouter.post('/sayHello', (req, res) => {
     const responseBody = {
         version: "2.0",
