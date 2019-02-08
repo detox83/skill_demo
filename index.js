@@ -9,10 +9,12 @@ app.use(bodyPaser.json());
 app.use('/api', apiRouter);
 
 apiRouter.post('/showInfo', (req, res) => {
+    console.log(req.headers);
+    console.log(req.body);
     const responseBody = {
         version: "2.0",
         template: {
-            outpusts: [
+            outputs: [
                 {
                     simpleText: {
                         text: "골라봐"
@@ -24,7 +26,7 @@ apiRouter.post('/showInfo', (req, res) => {
                     label: "정보보기",
                     action: "block",
                     messageText: "정보를 보여줍니다.",
-                    blockId: "setting blockId",
+                    blockId: "5c5b9870384c553f07cd0bc8",
                     extra: {
                         infoKey: "value"
                     }
@@ -33,12 +35,13 @@ apiRouter.post('/showInfo', (req, res) => {
                     label: "다음으로",
                     action: "block",
                     messageText: "다음으로",
-                    blockId: "setting blockId"
+                    blockId: "5a56ec0008cc1461d75291f6"
                 }
             ]
         }
     };
     res.status(200).send(responseBody);
+    console.log(responseBody);
 });
 
 apiRouter.post('/sayHello', (req, res) => {
