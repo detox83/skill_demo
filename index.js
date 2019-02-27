@@ -8,6 +8,72 @@ app.use(logger('dev', {}));
 app.use(bodyPaser.json());
 app.use('/api', apiRouter);
 
+
+apiRouter.post('/getRecentStoreList', (req, res) => {
+    const responseBody = {
+  "version": "2.0",
+  "template": {
+    "outputs": [
+      {
+        "simpleText": {
+          "text": "최근에 고객님이 이용하신 매장이에용.\r\n버튼을 눌러 선택해주세욧!"
+        },
+        "carousel": {
+          "type": "basicCard",
+          "items": [
+            {
+              "title": "리아 소공2호",
+              "description": "영업시간 : 08:00~21:00",
+              "thumbnail": {
+                "imageUrl": "https://chatbot.lottegrs.co.kr:8444/resources/images/store/11001.png"
+              },
+              "buttons": [
+                {
+                  "action": "block",
+                  "label": "선택하기",
+                  "messageText": "선택하기",
+                  "blockId": "5ab9a2e2ed255f5089c9410c",
+                  "extra": {
+                    "storeName": "리아 소공2호",
+                    "storeId": 11001
+                  }
+                },
+                {
+                  "action": "webLink",
+                  "label": "위치보기",
+                  "webLinkUrl": "http://map.daum.net/link/map/>리아 소공2호,37.56499100,126.98136900"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "quickReplies": [
+      {
+        "action": "block",
+        "label": "가까운 매장 검색",
+        "messageText": "가까운 매장 검색",
+        "blockId": "5ab84f157a487f07392fb175"
+      },
+      {
+        "action": "block",
+        "label": "키워드로 검색",
+        "messageText": "키워드로 검색",
+        "blockId": "5ab8529ee8212750b04fb989"
+      },
+      {
+        "action": "block",
+        "label": "최근 이용 매장",
+        "messageText": "최근 이용 매장",
+        "blockId": "5ab84d63ed255f5089c94095"
+      }
+    ]
+  }
+}
+    res.status(200).send(responseBody);
+});
+
 apiRouter.post('/showInfo', (req, res) => {
     console.log(req.headers);
     console.log(req.body);
