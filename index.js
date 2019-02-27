@@ -35,7 +35,7 @@ apiRouter.post('/showInfo', (req, res) => {
                     label: "다음으로",
                     action: "block",
                     messageText: "다음으로",
-                    blockId: "5a56ec0008cc1461d75291f6"
+                    blockId: "5b306bc9384c5546e695c18d"
                 }
             ]
         }
